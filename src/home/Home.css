@@ -1,0 +1,51 @@
+.home {
+  min-height: 500px;
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
+
+.listFiles {
+  float: left;
+  width: 20%;
+}
+.listFiles ul {
+  padding-left: 0;
+}
+.listFiles ul .selectedFile {
+  display: flex;
+  justify-content: space-between;
+}
+.listFiles ul .selectedFile li {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.container {
+  float: right;
+  width: 70%;
+  margin-right: 5%;
+  margin-left: 2%;
+}
+.container .dropzone {
+  position: relative;
+  background-color: #333333;
+  min-height: 250px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.container .dropzone p {
+  color: #FFFFFF;
+}
+.container .buttonSave {
+  height: 10%;
+}
+.container .buttonSave button {
+  margin-top: 2%;
+  height: 100%;
+  width: 100%;
+}
+
+/*# sourceMappingURL=Home.css.map */

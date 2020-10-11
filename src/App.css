@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.root {
+  width: 100%;
+}
+
+nav {
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1% 0;
+}
+nav ul li {
+  display: inline;
+}
+nav ul li a {
+  text-decoration: none;
+  background-color: #333333;
+  padding: 2%;
+}
+nav ul li a, nav ul li a:visited, nav ul li a:active {
+  color: #FFFFFF;
+}
+nav ul li a:hover {
+  background-color: #111111;
+}
+
+/*# sourceMappingURL=App.css.map */

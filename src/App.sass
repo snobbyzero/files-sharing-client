@@ -1,0 +1,30 @@
+$nav-color: #333333
+$hoover-color: #111111
+$text-color: #FFFFFF
+
+body
+  margin: 0
+  padding: 0
+
+.root
+  width: 100%
+
+nav
+  overflow: hidden
+  top: 0
+  width: 100%
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 1% 0
+
+    li
+      display: inline
+      a
+        text-decoration: none
+        background-color: $nav-color
+        padding: 2%
+        &, &:visited, &:active
+          color: $text-color
+        &:hover
+          background-color: $hoover-color
