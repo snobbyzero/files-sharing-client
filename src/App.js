@@ -6,32 +6,21 @@ import {
     Link
 } from 'react-router-dom';
 import './App.sass';
-import {Home} from "./home/Home";
-import {Test} from "./Test";
+import Home from "./home/Home";
+import HomeRedirect from "./home/HomeRedirect";
+import DownloadFiles from "./files/DownloadFiles";
+import NotFound from "./not_found/NotFound";
 
 function App() {
 
     return(
         <Router>
             <div className='menu'>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to='/'>Home</Link>
-                        </li>
-                        <li>
-                            <Link to='/test'>Test</Link>
-                        </li>
-                    </ul>
-                </nav>
                 <Switch>
-                    <Route path="/test">
-                        <Test />
-                    </Route>
-
-                    <Route path="/">
-                        <Home />
-                    </Route>
+                    <Route path="/files/:link" render={props => <DownloadFiles {...props}/>}/>
+                    <Route path="/redirect" render={props => <HomeRedirect {...props}/>}/>
+                    <Route exact path="/"><Home /></Route>
+                    <Route component={NotFound} />
                 </Switch>
             </div>
         </Router>
