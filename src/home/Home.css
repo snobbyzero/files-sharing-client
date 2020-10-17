@@ -5,47 +5,68 @@
   margin: 1%;
 }
 
-.listFiles {
+.list-files {
   float: left;
   width: 20%;
+  margin-top: 5%;
 }
-.listFiles ul {
+.list-files ul {
   padding-left: 0;
 }
-.listFiles ul .selectedFile {
+.list-files ul .selected-file {
+  margin-bottom: 4%;
   display: flex;
   justify-content: space-between;
 }
-.listFiles ul .selectedFile li {
+.list-files ul .selected-file li {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
+.list-files ul .selected-file button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-.container {
+.form {
   float: right;
-  width: 70%;
+  width: 50%;
+  margin-top: 5%;
   margin-right: 5%;
   margin-left: 2%;
 }
-.container .dropzone {
+.form .dropzone {
   position: relative;
   background-color: #333333;
-  min-height: 250px;
+  min-height: 333.3333333333px;
   align-items: center;
+  margin-bottom: 2%;
   display: flex;
   justify-content: center;
 }
-.container .dropzone p {
+.form .dropzone p {
   color: #FFFFFF;
 }
-.container .buttonSave {
-  height: 10%;
+.form .password {
+  width: 25%;
+  margin-bottom: 2%;
 }
-.container .buttonSave button {
-  margin-top: 2%;
-  height: 100%;
-  width: 100%;
+.form .password .password-input {
+  border-style: solid;
+}
+.form .dropdown {
+  min-width: 150px;
+  width: 25%;
+  margin-bottom: 2%;
+  cursor: pointer;
+}
+.form .dropdown .dropdown-list .rw-widget-container {
+  box-shadow: none;
+}
+.form .submit {
+  width: 25%;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=Home.css.map */

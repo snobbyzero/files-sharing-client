@@ -1,7 +1,8 @@
 $min-height-home: 500px
 $background-color-dropzone: #333333
 $text-color: #FFFFFF
-$container-width: 70%
+$container-width: 50%
+$font-size: 12pt
 
 .home
   min-height: $min-height-home
@@ -9,12 +10,14 @@ $container-width: 70%
   flex-direction: row
   margin: 1%
 
-.listFiles
+.list-files
   float: left
   width: 20%
+  margin-top: 5%
   ul
     padding-left: 0
-    .selectedFile
+    .selected-file
+      margin-bottom: 4%
       display: flex
       justify-content: space-between
       li
@@ -22,29 +25,49 @@ $container-width: 70%
         white-space: nowrap
         overflow: hidden
 
+      button
+        background: none
+        border: none
+        cursor: pointer
 
 
-.container
+.form
   float: right
   width: $container-width
+  margin-top: 5%
   margin-right: 5%
   margin-left: 2%
 
   .dropzone
     position: relative
     background-color: $background-color-dropzone
-    min-height: $min-height-home / 2
+    min-height: $min-height-home / 1.5
     align-items: center
+    margin-bottom: 2%
     display: flex
     justify-content: center
     p
       color: $text-color
 
-  .buttonSave
-    height: 10%
-    button
-      margin-top: 2%
-      height: 100%
-      width: 100%
+  .password
+    width: $container-width / 2
+    margin-bottom: 2%
+    .password-input
+      border-style: solid
+
+
+  .dropdown
+    min-width: 150px
+    width: $container-width / 2
+    margin-bottom: 2%
+    cursor: pointer
+    .dropdown-list
+      .rw-widget-container
+        box-shadow: none
+
+  .submit
+    width: $container-width / 2
+    cursor: pointer
+
 
 
