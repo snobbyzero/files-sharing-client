@@ -1,32 +1,30 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Switch,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 import './App.sass';
 import Home from "./home/Home";
 import HomeRedirect from "./home/HomeRedirect";
-import DownloadFiles from "./files/DownloadFiles";
+import DownloadFiles from "./download/DownloadFiles";
 import NotFound from "./not_found/NotFound";
+import RouteWithNav from "./RouteWithNav";
+import CatalogFiles from "./catalog/CatalogFiles";
 
 function App() {
 
-    return(
-        <Router>
-            <div className='menu'>
-                <Switch>
-                    <Route path="/files/:link" render={props => <DownloadFiles {...props}/>}/>
-                    <Route path="/redirect" render={props => <HomeRedirect {...props}/>}/>
-                    <Route exact path="/"><Home /></Route>
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
-        </Router>
+    return (
+        <BrowserRouter>
+            <Switch>
+                <RouteWithNav path="/files/:link" component={DownloadFiles}/>x
+                <RouteWithNav path="/files" component={CatalogFiles}/>
+                <RouteWithNav path="/redirect" component={HomeRedirect}/>
+                <RouteWithNav exact path="/" component={Home}/>
+                <Route component={NotFound}/>
+            </Switch>
+        </BrowserRouter>
     );
 }
-
-
 
 export default App;

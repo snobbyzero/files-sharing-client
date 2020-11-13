@@ -9,6 +9,7 @@ body {
 
 nav {
   overflow: hidden;
+  background-color: #333333;
   top: 0;
   width: 100%;
 }
@@ -22,7 +23,6 @@ nav ul li {
 }
 nav ul li a {
   text-decoration: none;
-  background-color: #333333;
   padding: 2%;
 }
 nav ul li a, nav ul li a:visited, nav ul li a:active {

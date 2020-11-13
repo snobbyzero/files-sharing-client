@@ -9,7 +9,7 @@ export default function SelectedFile(props) {
     return (
         <div className='selected-file'>
             <li>
-                <text>{props.file.name}</text>
+                <p>{props.file.name}</p>
             </li>
             <button onClick={deleteFile}>X</button>
         </div>

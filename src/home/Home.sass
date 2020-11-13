@@ -50,10 +50,30 @@ $font-size: 12pt
       color: $text-color
 
   .password
-    width: $container-width / 2
     margin-bottom: 2%
     .password-input
       border-style: solid
+    label
+      display: inline-block
+      text-align: right
+      padding-right: 1%
+
+  .name
+    margin-bottom: 2%
+    label
+      display: inline-block
+      text-align: right
+      padding-right: 1%
+    label:after
+      content: "*"
+      color: red
+
+  .description
+    margin-bottom: 2%
+    textarea
+      resize: none
+
+
 
 
   .dropdown

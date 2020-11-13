@@ -3,6 +3,6 @@ import React from 'react';
 export default function SendPasswordButton() {
 
     return (
-        <input type='submit' className='submit' value='Get link'/>
+        <input type='submit' className='submit' value='Download'/>
     )
 }

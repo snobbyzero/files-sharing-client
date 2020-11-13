@@ -1,22 +1,18 @@
-import React, {useRef, useState} from 'react';
-import PasswordInput from "../PasswordInput";
-import SendPasswordButton from "./SendPasswordButton";
 import * as axios from "axios";
+import React, {useRef, useState} from "react";
+import PasswordInput from "./PasswordInput";
+import SendPasswordButton from "./SendPasswordButton";
 
-export default function DownloadFiles(props) {
-
-    const link = props.match.params.link;
+export default function ProtectedFilesForm({link, name, description, createdAt}) {
     const password = useRef();
     const [errorMsg, setErrorMsg] = useState("");
-
-    console.log(link);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const body = {
             password: password.current.value
         };
-        axios.post(`/files/${link}`, body, {
+        axios.post(`/api/files/${link}`, body, {
             responseType: 'blob',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +23,9 @@ export default function DownloadFiles(props) {
                 const blob = new Blob([response.data]);
                 const link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
-                link.download = 'test.zip';
+                // Get filename from header
+                console.log(response.headers['content-disposition'])
+                link.download = `${response.headers['content-disposition'].split("filename=\"")[1].replace("\"", "")}.zip`;
 
                 document.body.appendChild(link);
 
@@ -35,14 +33,17 @@ export default function DownloadFiles(props) {
             })
             .catch(err => {
                 console.log(err);
-                setErrorMsg("Incorrect link or password")
+                setErrorMsg("Incorrect password");
             });
     }
 
     return (
         <form onSubmit={handleSubmit}>
+            <h1>{name}</h1>
+            <h2>{description}</h2>
+            <h3>{createdAt}</h3>
             <PasswordInput password={password}/>
-            <SendPasswordButton />
+            <SendPasswordButton/>
             <p>{errorMsg}</p>
         </form>
     );

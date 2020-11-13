@@ -3,16 +3,22 @@ import {SendFilesButton} from "./SendFilesButton";
 import React, {useRef, useState} from "react";
 import './Home.sass'
 import SelectedFile from "./SelectedFile";
-import PasswordInput from "../PasswordInput";
 import {ExpireTimeDropdown} from "./ExpireTimeDropdown";
 import 'react-widgets/lib/scss/react-widgets.scss';
 import * as axios from "axios";
 import {useHistory} from 'react-router-dom';
+import NameInput from "./NameInput";
+import LinkOnlyCheckbox from "./LinkOnlyCheckbox";
+import PasswordInput from "./PasswordInput";
+import DescriptionInput from "./DescriptionInput";
 
 export default function Home() {
-    const [files, setFiles] = useState([]);
+    const name = useRef();
+    const description = useRef()
     const password = useRef();
-    const [expireTime, setExpireTime] = useState({days: 0, hours: 0});
+    const [files, setFiles] = useState([]);
+    const [linkOnly, setLinkOnly] = useState(false);
+    const [expireTime, setExpireTime] = useState({days: 1, hours: 0});
     const {push} = useHistory();
 
     const onFileDelete = (f) => {
@@ -31,6 +37,11 @@ export default function Home() {
         setFiles(files => [...files, ...f]);
     };
 
+    const onLinkOnlyChange = ({target}) => {
+        console.log(target.checked)
+        setLinkOnly(target.checked)
+    }
+
     const getDatetime = ({days = 0, hours = 0}) => {
         const date = new Date(Date.now());
         date.setDate(date.getDate() + days);
@@ -44,12 +55,22 @@ export default function Home() {
             const formData = new FormData();
             // Adding file to request
             files.forEach(file => formData.append('files', file));
+            // Adding archive name
+            formData.append('name', name.current.value)
             // Adding password
             formData.append('password', password.current.value);
             // Adding expire time
             formData.append('expireTime', getDatetime(expireTime));
-            console.log(formData);
-            axios.post('/upload', formData, {
+            // Adding linkOnly
+            formData.append('linkOnly', linkOnly)
+            // Adding description
+            console.log("Description:")
+            console.log(description)
+            formData.append('description', description.current.value)
+
+            console.log(formData.get('linkOnly'));
+
+            axios.post('/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -63,7 +84,7 @@ export default function Home() {
                     })
                 });
         } else {
-            alert('Choose files!!!');
+            alert('Choose download!!!');
         }
     };
 
@@ -76,8 +97,11 @@ export default function Home() {
             <div className='form' onSubmit={handleSubmit}>
                 <form>
                     <DragAndDropFiles onFileUpdate={onFileUpdate}/>
-                    <PasswordInput password={password}/>
+                    <LinkOnlyCheckbox onLinkOnlyChange={onLinkOnlyChange}/>
+                    <NameInput name={name}/>
+                    <PasswordInput password={password} disabled={!linkOnly}/>
                     <ExpireTimeDropdown onExpireTimeChange={onExpireTimeChange}/>
+                    <DescriptionInput description={description}/>
                     <SendFilesButton/>
                 </form>
             </div>

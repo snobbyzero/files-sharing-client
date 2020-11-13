@@ -49,11 +49,33 @@
   color: #FFFFFF;
 }
 .form .password {
-  width: 25%;
   margin-bottom: 2%;
 }
 .form .password .password-input {
   border-style: solid;
+}
+.form .password label {
+  display: inline-block;
+  text-align: right;
+  padding-right: 1%;
+}
+.form .name {
+  margin-bottom: 2%;
+}
+.form .name label {
+  display: inline-block;
+  text-align: right;
+  padding-right: 1%;
+}
+.form .name label:after {
+  content: "*";
+  color: red;
+}
+.form .description {
+  margin-bottom: 2%;
+}
+.form .description textarea {
+  resize: none;
 }
 .form .dropdown {
   min-width: 150px;
